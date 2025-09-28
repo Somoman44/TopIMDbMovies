@@ -68,6 +68,7 @@ The analysis yielded several interesting insights:
 
 ### Prerequisites
 Make sure you have Python 3.x installed. You will also need the following libraries, which can be installed via pip:
+
 `pip install pandas numpy seaborn matplotlib jupyterlab`
 ### Steps
 1.  **Clone the repository**:
