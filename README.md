@@ -8,6 +8,12 @@ The analysis delves into data cleaning, visualization, and statistical explorati
 
 The dataset used in this project was obtained from **Kaggle** and is contained in the file `imdb-top-rated-movies-user-rated.csv`.
 
+> MIT License
+>
+> Copyright (c) 2013 Mark Otto.
+>
+> Copyright (c) 2017 Andrew Fong.
+
 It includes detailed information for each of the 950 movies, such as:
 - `Title` and `Rank`
 - `IMDb Rating` and `Votes`
