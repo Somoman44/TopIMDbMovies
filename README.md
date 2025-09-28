@@ -51,4 +51,14 @@ The analysis yielded several interesting insights:
     * On average, IMDb ratings (audience) and Meta Scores (critics) are in general agreement, with a mean difference close to zero.
     * The distribution shows that the general audience tends to overrate popular but critically middling films more than critics underrate niche, well-acclaimed films.
 * **Top Performers**:
-    * **
+    * **Director**: Akira Kurosawa has the most films (11) on the list.
+    * **Star**: Robert De Niro appears in the most films (14).
+    * **Writer**: Hayao Miyazaki is the most prolific writer (10 films) in this dataset.
+* **Key Metrics**:
+    * The number of `Votes` has a positive correlation with `IMDb Rating`, suggesting that more popular films tend to receive higher ratings.
+    * `Worldwide Gross` shows a positive correlation with `Votes`, which is expected as more viewers often translate to higher box office revenue.
+
+## 🚀 How to Run This Project
+
+### Prerequisites
+Make sure you have Python 3.x installed. You will also need the following libraries, which can be installed via pip:
