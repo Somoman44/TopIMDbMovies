@@ -68,3 +68,21 @@ The analysis yielded several interesting insights:
 
 ### Prerequisites
 Make sure you have Python 3.x installed. You will also need the following libraries, which can be installed via pip:
+`pip install pandas numpy seaborn matplotlib jupyterlab`
+### Steps
+1.  **Clone the repository**:
+    ```bash
+    git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
+    cd your-repository-name
+    ```
+2.  **Dataset**:
+    - Download the `imdb-top-rated-movies-user-rated.csv` dataset.
+    - Place it in the same directory as the Jupyter Notebook.
+3.  **Launch Jupyter**:
+    - Run Jupyter Notebook or JupyterLab:
+    ```bash
+    jupyter lab
+    ```
+    - Open the `project.ipynb` file.
+4.  **Run the cells**:
+    - Execute the cells sequentially to reproduce the analysis.
