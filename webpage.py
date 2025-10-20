@@ -20,7 +20,7 @@ writers = df_writers.explode('Writers')['Writers'].map(lambda x:x.strip('"')).un
 
 st.markdown("# IMDb Rating Predictor")
 
-chosen_votes = st.select_slider('select no. of votes',np.arange(0,20001))
+chosen_votes = st.select_slider('select no. of votes',np.arange(0,200001))
 chosen_critics = st.select_slider('select critics',np.arange(0,101))
 chosen_director = st.selectbox('choose director',options=directors)
 chosen_genre = st.multiselect('choose genre',options=tags,max_selections=5)
@@ -39,6 +39,7 @@ if st.button("predict"):
     st.write("Predicted IMDb rating")
 
     st.write(round(prediction,1))
+
 
 
 
