@@ -35,6 +35,7 @@ sample = pd.DataFrame({
 })
 
 if st.button("predict"):
-    prediction = round(model.predict(sample),1)
+    prediction = round(int(model.predict(sample),1))
     st.write("Predicted IMDb rating")
+
     st.write(prediction)
