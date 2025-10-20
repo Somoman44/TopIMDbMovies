@@ -62,12 +62,12 @@ The final model achieved the following performance on the unseen test set:
 ### Predicted vs. Actual Plot
 This plot visually confirms the model's success. The predictions cluster tightly around the line of perfect prediction, validating the low error scores.
 
-![Predicted vs Actual Plot](image_138f7b.png)
+![Predicted vs Actual Plot](./img/output.png)
 
 ### Feature Importance
 The most insightful finding was that **thoughtful feature engineering was more impactful than algorithm choice**. The target-encoded `foo_` features were the most powerful predictors, proving that the historical performance of a movie's cast, writers, and tags are key drivers of its rating.
 
-![Feature Importance Plot](image_2d56f7.png)
+![Feature Importance Plot](./img/output2.png)
 
 ---
 
