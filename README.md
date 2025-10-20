@@ -1,89 +1,88 @@
-# Analysis of Top 950 IMDB Rated Movies
+# IMDb Movie Rating Prediction: A Machine Learning Case Study
 
-This project performs an in-depth exploratory data analysis (EDA) on a dataset of the top 950 highest-rated movies from IMDb. The goal is to uncover patterns and relationships within the data, identify key contributors (directors, writers, stars), and understand the factors that contribute to a movie's high rating and ranking.
+This project is an end-to-end data analysis and machine learning pipeline that predicts the IMDb rating of a movie based on its features. The goal was not only to build an accurate model but to identify the key drivers that contribute to a film's critical and commercial reception.
 
-The analysis delves into data cleaning, visualization, and statistical exploration to draw meaningful conclusions about how movie ratings work and how they are ranked.
+The project demonstrates a complete workflow, from initial data cleaning and exploratory analysis to advanced feature engineering, model training, and deployment in an interactive web application.
 
-## 📊 Dataset
+**Key Achievement:** A significant part of this project involved identifying and correcting two subtle forms of **data leakage**, which led to a robust and methodologically sound final model. The final model, while having a modest R-squared, is highly accurate in its predictions, achieving a **Mean Absolute Percentage Error (MAPE) of only ~2%**.
 
-The dataset used in this project was obtained from **Kaggle** and is contained in the file `imdb-top-rated-movies-user-rated.csv`.
+---
 
-> MIT License
->
-> Copyright (c) 2013 Mark Otto.
->
-> Copyright (c) 2017 Andrew Fong.
+## 🚀 Live Demo
 
-It includes detailed information for each of the 950 movies, such as:
-- `Title` and `Rank`
-- `IMDb Rating` and `Votes`
-- `Meta Score` (critic rating)
-- `Worldwide Gross`
-- `Director`, `Writers`, and `Stars`
-- `Tags` (Genres) and `Description`
+**(Placeholder)**
+*You can add the link to your deployed Streamlit application here once it's live.*
 
-## 🛠️ Technologies Used
+---
 
-This analysis is conducted using Python and the following core data science libraries:
-- **Pandas:** For data manipulation, cleaning, and aggregation.
-- **NumPy:** For numerical operations.
-- **Seaborn & Matplotlib:** For data visualization, including heatmaps, pair plots, and bar charts.
+## 🛠️ Tech Stack
 
-## 📈 Analysis Overview
+* **Data Analysis & Manipulation:** Python, Pandas, NumPy
+* **Machine Learning:** Scikit-learn, XGBoost, Category Encoders
+* **Data Visualization:** Matplotlib, Seaborn
+* **Web App:** Streamlit
+* **Model Persistence:** Joblib
 
-The project is broken down into several key stages:
+---
 
-1.  **Data Loading and Initial Exploration**:
-    - The dataset is loaded into a Pandas DataFrame.
-    - Initial exploration is done using `.head()`, `.info()`, and `.describe()` to get a first look at the data structure, types, and summary statistics.
+## 📖 Project Workflow
 
-2.  **Data Cleaning and Preprocessing**:
-    - **Votes Column:** Converted string values (e.g., `927K`, `1.2M`) into numerical integers.
-    - **Worldwide Gross Column:** Cleaned and converted the string representations of currency (e.g., `$54-234-062`) into numerical float values, handling missing (`-`) and NaN entries.
-    - **Categorical Columns:** Transformed comma-separated strings in `Tags`, `Stars`, and `Writers` into lists of individual items to facilitate counting and grouping.
+The project followed a systematic, iterative workflow, mirroring a professional data science process.
 
-3.  **Exploratory Data Analysis (EDA)**:
-    - **Correlation Analysis**: A heatmap was generated to visualize the correlation between numerical features like `Rank`, `IMDb Rating`, `Meta Score`, and `Votes`.
-    - **Pair Plot Visualization**: A pair plot was created to observe the pairwise relationships and distributions between all numerical variables.
-    - **Top Contributors**: Identified and visualized the top 15 directors, writers, and stars who have the most movies featured in this high-rated list.
-    - **Audience vs. Critic Ratings**: A comparative analysis of IMDb Ratings (audience) versus Meta Scores (critics) was performed. The difference between the scaled scores was analyzed to see whether the general audience agrees with professional critics.
+1.  **Data Cleaning & Preparation:** The initial dataset was cleaned and preprocessed. This included converting data types, handling missing values, and using stateless transformations (like splitting string-based lists into Python lists) before any data splitting.
 
-## 💡 Key Findings
+2.  **Exploratory Data Analysis (EDA):** Initial analysis revealed the dataset was heavily skewed towards modern films (post-2010) and that critic scores (Metacritic) and user scores (IMDb) showed a diverging trend over the years.
 
-The analysis yielded several interesting insights:
+3.  **Feature Engineering & Pipeline Creation:**
+    * A robust `scikit-learn` pipeline was built to handle all preprocessing steps.
+    * A **custom transformer** was created to apply a `LeaveOneOutEncoder` to high-cardinality categorical features (`Director`, `Stars`, `Writers`, `Tags`). This was a key step in creating powerful predictive features.
 
-* **Ranking Mechanism**: The dataset's `Rank` is inverted; a higher rank number corresponds to a better movie. `IMDb Rating` is the most significant factor in determining this rank.
-* **Audience vs. Critics**:
-    * On average, IMDb ratings (audience) and Meta Scores (critics) are in general agreement, with a mean difference close to zero.
-    * The distribution shows that the general audience tends to overrate popular but critically middling films more than critics underrate niche, well-acclaimed films.
-* **Top Performers**:
-    * **Director**: Akira Kurosawa has the most films (11) on the list.
-    * **Star**: Robert De Niro appears in the most films (14).
-    * **Writer**: Hayao Miyazaki is the most prolific writer (10 films) in this dataset.
-* **Key Metrics**:
-    * The number of `Votes` has a positive correlation with `IMDb Rating`, suggesting that more popular films tend to receive higher ratings.
-    * `Worldwide Gross` shows a positive correlation with `Votes`, which is expected as more viewers often translate to higher box office revenue.
+4.  **Model Training & Iteration:**
+    * Several models were tested, including Linear Regression, RandomForestRegressor, and XGBRegressor.
+    * **Data Leakage Discovery:** The iterative process was crucial in identifying and fixing two major data leakage issues, which initially produced an unrealistic 99% R-squared score.
+    * **Feature Selection:** Through experimentation, I discovered that removing the highest-cardinality features (`foo_Stars`, `foo_Writers`) reduced overfitting and improved the model's ability to generalize, boosting the honest R-squared score from ~19% to **~25%**.
 
-## 🚀 How to Run This Project
+5.  **Model Evaluation:** The final XGBoost model was evaluated using a suite of metrics to get a complete picture of its performance.
 
-### Prerequisites
-Make sure you have Python 3.x installed. You will also need the following libraries, which can be installed via pip:
+6.  **Deployment:** The final, trained pipeline was saved using `joblib` and integrated into an interactive Streamlit web application.
 
-`pip install pandas numpy seaborn matplotlib jupyterlab`
-### Steps
-1.  **Clone the repository**:
+---
+
+## 📊 Key Findings & Analysis
+
+### Model Performance
+The final model achieved the following performance on the unseen test set:
+
+| Metric | Score | Interpretation |
+| :--- | :--- | :--- |
+| **R-squared** | ~25% | The model explains a respectable 25% of the variance in IMDb ratings, a strong result for a subjective social science problem. |
+| **RMSE** | ~0.18 | The model's predictions are typically off by only 0.18 rating points. |
+| **MAPE** | ~1.87% | On average, the model's prediction is only **1.87%** away from the actual score, demonstrating high practical accuracy. |
+
+### Predicted vs. Actual Plot
+This plot visually confirms the model's success. The predictions cluster tightly around the line of perfect prediction, validating the low error scores.
+
+![Predicted vs Actual Plot](image_138f7b.png)
+
+### Feature Importance
+The most insightful finding was that **thoughtful feature engineering was more impactful than algorithm choice**. The target-encoded `foo_` features were the most powerful predictors, proving that the historical performance of a movie's cast, writers, and tags are key drivers of its rating.
+
+![Feature Importance Plot](image_2d56f7.png)
+
+---
+
+## 🚀 How to Run the App Locally
+
+1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
-    cd your-repository-name
+    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
+    cd your-repo-name
     ```
-2.  **Dataset**:
-    - Download the `imdb-top-rated-movies-user-rated.csv` dataset.
-    - Place it in the same directory as the Jupyter Notebook.
-3.  **Launch Jupyter**:
-    - Run Jupyter Notebook or JupyterLab:
+2.  **Install the dependencies:**
     ```bash
-    jupyter lab
+    pip install -r requirements.txt
     ```
-    - Open the `project.ipynb` file.
-4.  **Run the cells**:
-    - Execute the cells sequentially to reproduce the analysis.
+3.  **Run the Streamlit app:**
+    ```bash
+    streamlit run webpage.py
+    ```
