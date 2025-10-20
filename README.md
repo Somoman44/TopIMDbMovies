@@ -11,6 +11,7 @@ The project demonstrates a complete workflow, from initial data cleaning and exp
 ## 🚀 Live Demo
 
 https://topimdbmovies-eu4tngd9e57y2pzcnssyuj.streamlit.app/#im-db-rating-predictor
+
 **click on this link to visit the live webpage**
 ---
 
