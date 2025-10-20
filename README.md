@@ -75,8 +75,8 @@ The most insightful finding was that **thoughtful feature engineering was more i
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-    cd your-repo-name
+    git clone https://github.com/Somoman44/TopIMDbMovies.git
+    cd TopIMDbMovies
     ```
 2.  **Install the dependencies:**
     ```bash
